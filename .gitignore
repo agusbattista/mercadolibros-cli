@@ -1,0 +1,10 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Compiled class files
+target/
