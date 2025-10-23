@@ -1,6 +1,7 @@
 package io.github.agusbattista;
 
 import io.github.agusbattista.utils.StringFormatter;
+import java.util.Objects;
 
 public class Author {
   private static int count = 1;
@@ -32,6 +33,21 @@ public class Author {
 
   public int getId() {
     return this.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(biography, fullName, id);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof Author)) return false;
+    Author other = (Author) obj;
+    return Objects.equals(biography, other.biography)
+        && Objects.equals(fullName, other.fullName)
+        && id == other.id;
   }
 
   @Override

@@ -42,14 +42,6 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
     return this.authors.stream().filter(a -> a.getId() == id).findFirst().orElse(null);
   }
 
-  int optionSelection() {
-    int option;
-    do {
-      option = this.readInteger("Ingrese una opción válida (1 o 2):");
-    } while (option != 1 && option != 2);
-    return option;
-  }
-
   Author searchByOption() {
     System.out.println("¿Desea buscar el autor por índice o por nombre completo?");
     System.out.println("1) Índice");
@@ -76,8 +68,7 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
       System.out.println("No se ha encontrado el autor");
     } else {
       System.out.println("¿Desea cambiar el nombre?");
-      System.out.println("1) Sí");
-      System.out.println("2) No");
+      printTwoOptions();
       int option = this.optionSelection();
       if (option == 1) {
         String newFullName = this.readString("Ingrese el nuevo nombre:");
@@ -85,8 +76,7 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
         System.out.println("Nombre del autor actualizado con éxito");
       }
       System.out.println("¿Desea cambiar la biografía?");
-      System.out.println("1) Sí");
-      System.out.println("2) No");
+      printTwoOptions();
       option = this.optionSelection();
       if (option == 1) {
         String biography = this.readString("Ingrese la biografía:");

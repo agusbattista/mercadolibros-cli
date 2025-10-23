@@ -43,4 +43,17 @@ public abstract class ConsoleCRUD<T> {
     System.out.println(message);
     return scanner.nextLine();
   }
+
+  int optionSelection() {
+    int option;
+    do {
+      option = this.readInteger("Ingrese una opción válida (1 o 2):");
+    } while (option != 1 && option != 2);
+    return option;
+  }
+
+  protected void printTwoOptions() {
+    System.out.println("1) Sí");
+    System.out.println("2) No");
+  }
 }
