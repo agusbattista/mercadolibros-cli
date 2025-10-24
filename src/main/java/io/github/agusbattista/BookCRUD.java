@@ -1,5 +1,6 @@
 package io.github.agusbattista;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookCRUD extends ConsoleCRUD<Book> {
@@ -140,6 +141,10 @@ public class BookCRUD extends ConsoleCRUD<Book> {
       this.books.remove(book);
       System.out.println("Libro eliminado exitosamente");
     }
+  }
+  
+  public List<Book> getBooksByAutor(Author author) {
+    return this.books.stream().filter(book -> book.getAuthors().contains(author)).toList();  
   }
 
   @Override

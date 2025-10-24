@@ -53,7 +53,7 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
       author = getAuthor(id);
     } else {
       String fullName =
-          this.readString("Ingrese el nombre completo del autor que desea modificar:");
+          this.readString("Ingrese el nombre completo del autor que desea modificar o eliminar:");
       author = getAuthor(fullName);
     }
     return author;
@@ -61,8 +61,9 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
 
   @Override
   public void update() {
-    System.out.println("Listando autores que puede modificar...");
+    System.out.println("A continuación se listaran los autores que puede modificar");
     this.list();
+    boolean modified = false;
     Author author = this.searchByOption();
     if (author == null) {
       System.out.println("No se ha encontrado el autor");
@@ -71,6 +72,7 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
       printTwoOptions();
       int option = this.optionSelection();
       if (option == 1) {
+        modified = true;
         String newFullName = this.readString("Ingrese el nuevo nombre:");
         author.setFullName(newFullName);
         System.out.println("Nombre del autor actualizado con éxito");
@@ -79,18 +81,26 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
       printTwoOptions();
       option = this.optionSelection();
       if (option == 1) {
+        modified = true;
         String biography = this.readString("Ingrese la biografía:");
         author.setBiography(biography);
         System.out.println("Biografía actualizada con éxito");
       }
     }
+    if (modified) {
+      System.out.println("Autor modificado exitosamente");
+    }
   }
 
   @Override
   public void delete() {
-    System.out.println("Listando autores que puede eliminar...");
+    System.out.println("A continuación se listaran los autores que puede eliminar");
     this.list();
     Author author = this.searchByOption();
+    this.delete(author);
+  }
+  
+  public void delete(Author author) {
     if (author == null) {
       System.out.println("No se ha encontrado el autor");
     } else {
