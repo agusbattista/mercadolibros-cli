@@ -99,7 +99,7 @@ public class AuthorCRUD extends ConsoleCRUD<Author> {
     Author author = this.searchByOption();
     this.delete(author);
   }
-  
+
   public void delete(Author author) {
     if (author == null) {
       System.out.println("No se ha encontrado el autor");

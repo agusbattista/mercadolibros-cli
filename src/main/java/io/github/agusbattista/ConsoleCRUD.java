@@ -2,7 +2,7 @@ package io.github.agusbattista;
 
 import java.util.Scanner;
 
-public abstract class ConsoleCRUD<T> {
+public abstract class ConsoleCRUD<T> implements InputConsoleInterface {
   protected final Scanner scanner = new Scanner(System.in);
 
   public abstract void create();
@@ -15,7 +15,7 @@ public abstract class ConsoleCRUD<T> {
 
   public abstract void showOptions();
 
-  protected int readInteger(String message) {
+  public int readInteger(String message) {
     while (true) {
       try {
         System.out.println(message);
@@ -27,7 +27,7 @@ public abstract class ConsoleCRUD<T> {
     }
   }
 
-  protected double readDouble(String message) {
+  public double readDouble(String message) {
     while (true) {
       try {
         System.out.println(message);
@@ -39,7 +39,7 @@ public abstract class ConsoleCRUD<T> {
     }
   }
 
-  protected String readString(String message) {
+  public String readString(String message) {
     System.out.println(message);
     return scanner.nextLine();
   }

@@ -40,8 +40,8 @@ public class Main {
           System.out.println("Corroborando que el autor no esté asociado con ningún libro...");
           List<Book> booksForAuthor = booksCrud.getBooksByAutor(author);
           if (!booksForAuthor.isEmpty()) {
-            System.out
-                .println("No se puede eliminar el autor. Elimine sus libros y vuelva a intenarlo");
+            System.out.println(
+                "No se puede eliminar el autor. Elimine sus libros y vuelva a intenarlo");
             System.out.println("Libros en los que aparece...");
             System.out.println(booksForAuthor.toString());
           } else {
@@ -55,9 +55,8 @@ public class Main {
     } while (option != 0);
   }
 
-
-  private static void addAuthorToList(AuthorCRUD authorsCrud, BookCRUD booksCrud,
-      List<Author> bookAuthors) {
+  private static void addAuthorToList(
+      AuthorCRUD authorsCrud, BookCRUD booksCrud, List<Author> bookAuthors) {
     String autorFullName = booksCrud.readString("Ingrese el nombre completo del autor:");
     Author author = authorsCrud.getAuthor(autorFullName);
     if (author == null) {
@@ -68,8 +67,8 @@ public class Main {
     bookAuthors.add(author);
   }
 
-  private static List<Author> addAuthorsToList(AuthorCRUD authorsCrud, BookCRUD booksCrud,
-      Scanner scanner) {
+  private static List<Author> addAuthorsToList(
+      AuthorCRUD authorsCrud, BookCRUD booksCrud, Scanner scanner) {
     List<Author> bookAuthors = new ArrayList<>();
     System.out.println("Carga de autores del libro...");
     int option;
@@ -120,13 +119,13 @@ public class Main {
                 List<Author> bookAuthors = addAuthorsToList(authorsCrud, booksCrud, scanner);
                 if (!bookAuthors.isEmpty()) {
                   booksCrud.list();
-                  System.out
-                      .println("Elija a que libro listado quiere asignar el autor/los autores");
+                  System.out.println(
+                      "Elija a que libro listado quiere asignar el autor/los autores");
                   Book book = booksCrud.searchByOption();
                   if (book != null) {
                     book.setAuthors(bookAuthors);
-                    System.out
-                        .println("Autor/autores asignado/s correctamente al libro seleccionado");
+                    System.out.println(
+                        "Autor/autores asignado/s correctamente al libro seleccionado");
                   } else {
                     System.out.println(
                         "Libro no encontrado, falló la carga de autores. Vuelva a intentarlo");
@@ -135,7 +134,6 @@ public class Main {
                   System.out.println(
                       "Fallo en la carga de autores. Debe cargar al menos uno. Vuelva a intentarlo");
                 }
-
               }
               case 2 -> booksCrud.update();
               case 3 -> System.out.println("Modificación de libro finalizada");
